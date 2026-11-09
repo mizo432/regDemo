@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="12.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.github.mizo432.reg.ui.controller.ProductController" stylesheets="@../css/material-design.css">
+    <padding>
+        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+    </padding>
+
+    <Label text="商品管理" styleClass="header-label" />
+
+    <VBox spacing="10.0" styleClass="card">
+        <padding>
+            <Insets bottom="12.0" left="16.0" right="16.0" top="12.0" />
+        </padding>
+        <HBox spacing="10.0">
+            <TextField fx:id="searchField" promptText="バーコードまたは名称で検索" HBox.hgrow="ALWAYS" />
+            <Button text="検索" onAction="#handleSearch" />
+            <Button text="全件表示" onAction="#handleShowAll" styleClass="outlined" />
+        </HBox>
+    </VBox>
+
+    <TableView fx:id="productTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="barcodeColumn" text="バーコード" prefWidth="120" />
+            <TableColumn fx:id="nameColumn" text="名称" prefWidth="200" />
+            <TableColumn fx:id="priceColumn" text="価格" prefWidth="100" />
+            <TableColumn fx:id="taxCategoryColumn" text="税区分" prefWidth="80" />
+            <TableColumn fx:id="statusColumn" text="状態" prefWidth="80" />
+        </columns>
+    </TableView>
+
+    <HBox spacing="10.0">
+        <Button text="新規登録" onAction="#handleNewProduct" styleClass="default-button" />
+        <Button text="編集" onAction="#handleEditProduct" />
+        <Button text="削除" onAction="#handleDeleteProduct" styleClass="outlined" />
+    </HBox>
+</VBox>

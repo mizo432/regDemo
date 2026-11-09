@@ -1,0 +1,27 @@
+# 本番環境用設定
+# H2データベースは開発用であり、本番環境ではPostgreSQLやMySQLなどの本格的なRDBSを使用すること
+
+spring:
+  profiles: prod
+  
+  # 本番環境ではH2コンソールを無効化（デフォルトでも無効だが、明示的に設定）
+  h2:
+    console:
+      enabled: false
+
+  # 本番環境ではSQLログを出力しない
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+
+  # 本番環境ではFlywayを有効化
+  flyway:
+    enabled: true
+
+# 本番環境では税率は環境変数で設定すること
+reg:
+  tax:
+    rate: ${REG_TAX_RATE:0.1}
+    reducedRate: ${REG_TAX_REDUCED_RATE:0.08}

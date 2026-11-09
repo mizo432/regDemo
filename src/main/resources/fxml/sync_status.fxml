@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="12.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.github.mizo432.reg.ui.controller.SyncStatusController" stylesheets="@../css/material-design.css">
+    <padding>
+        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+    </padding>
+
+    <Label text="同期状態" styleClass="header-label" />
+
+    <TitledPane text="送信待ち取引" expanded="true">
+        <TableView fx:id="outboxTable">
+            <columns>
+                <TableColumn fx:id="outboxTransactionColumn" text="取引ID" prefWidth="150" />
+                <TableColumn fx:id="outboxStatusColumn" text="状態" prefWidth="80" />
+                <TableColumn fx:id="outboxRetryColumn" text="再送回数" prefWidth="80" />
+                <TableColumn fx:id="outboxErrorColumn" text="エラー" prefWidth="200" />
+            </columns>
+        </TableView>
+    </TitledPane>
+
+    <TitledPane text="受信待ちイベント" expanded="false">
+        <TableView fx:id="inboxTable">
+            <columns>
+                <TableColumn fx:id="inboxTypeColumn" text="イベント種別" prefWidth="120" />
+                <TableColumn fx:id="inboxIdColumn" text="イベントID" prefWidth="150" />
+                <TableColumn fx:id="inboxAppliedColumn" text="適用済み" prefWidth="80" />
+            </columns>
+        </TableView>
+    </TitledPane>
+
+    <HBox spacing="10.0">
+        <Button text="更新" onAction="#handleRefresh" styleClass="outlined" />
+    </HBox>
+</VBox>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="12.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.github.mizo432.reg.ui.controller.TransactionHistoryController" stylesheets="@../css/material-design.css">
+    <padding>
+        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+    </padding>
+
+    <Label text="取引履歴" styleClass="header-label" />
+
+    <VBox spacing="10.0" styleClass="card">
+        <padding>
+            <Insets bottom="12.0" left="16.0" right="16.0" top="12.0" />
+        </padding>
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <Label text="状態:" />
+            <ComboBox fx:id="statusCombo" prefWidth="150" />
+            <Button text="更新" onAction="#handleRefresh" styleClass="outlined" />
+        </HBox>
+    </VBox>
+
+    <TableView fx:id="transactionTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="transactionIdColumn" text="取引ID" prefWidth="150" />
+            <TableColumn fx:id="dateColumn" text="日時" prefWidth="150" />
+            <TableColumn fx:id="totalColumn" text="合計" prefWidth="100" />
+            <TableColumn fx:id="paymentColumn" text="支払い" prefWidth="80" />
+            <TableColumn fx:id="statusColumn" text="状態" prefWidth="80" />
+        </columns>
+    </TableView>
+
+    <HBox spacing="10.0">
+        <Button text="取消" onAction="#handleCancel" styleClass="outlined" />
+        <Button text="返品" onAction="#handleReturn" styleClass="flat" />
+    </HBox>
+</VBox>

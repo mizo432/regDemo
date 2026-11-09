@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.github.mizo432.reg.ui.controller.MainController" stylesheets="@../css/material-design.css">
+    <left>
+        <VBox styleClass="nav-sidebar" spacing="4.0">
+            <padding>
+                <Insets bottom="8.0" left="0.0" right="0.0" top="8.0" />
+            </padding>
+            <Label text="レジアプリ" VBox.vgrow="NEVER" />
+            <Separator />
+            <Button text="🛒 会計画面" onAction="#handleCheckout" styleClass="nav-button" />
+            <Button text="📦 商品管理" onAction="#handleProduct" styleClass="nav-button" />
+            <Button text="📦 セット商品" onAction="#handleSetProduct" styleClass="nav-button" />
+            <Button text="📊 在庫管理" onAction="#handleInventory" styleClass="nav-button" />
+            <Button text="📋 取引履歴" onAction="#handleTransactionHistory" styleClass="nav-button" />
+            <Button text="🤝 委託商品" onAction="#handleCommission" styleClass="nav-button" />
+            <Button text="🔄 同期状態" onAction="#handleSyncStatus" styleClass="nav-button" />
+        </VBox>
+    </left>
+    <center>
+        <StackPane fx:id="contentPane" styleClass="content-area" BorderPane.alignment="CENTER" />
+    </center>
+</BorderPane>

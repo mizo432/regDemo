@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.github.mizo432.reg.ui.controller.CheckoutController" stylesheets="@../css/material-design.css">
+    <top>
+        <VBox spacing="12.0" styleClass="card" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="12.0" left="16.0" right="16.0" top="16.0" />
+            </padding>
+            <Label text="会計画面" styleClass="header-label" />
+            <HBox spacing="10.0">
+                <TextField fx:id="barcodeField" promptText="バーコードを入力" HBox.hgrow="ALWAYS" />
+                <Button text="登録" onAction="#handleAddToCart" />
+                <TextField fx:id="searchField" promptText="商品検索" HBox.hgrow="ALWAYS" />
+                <Button text="検索" onAction="#handleSearch" styleClass="outlined" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <SplitPane BorderPane.alignment="CENTER">
+            <items>
+                <TableView fx:id="cartTable" prefWidth="400" editable="true">
+                    <columns>
+                        <TableColumn fx:id="cartNameColumn" text="商品名" prefWidth="150" />
+                        <TableColumn fx:id="cartPriceColumn" text="単価" prefWidth="80" />
+                        <TableColumn fx:id="cartQuantityColumn" text="数量" prefWidth="80" editable="true" />
+                        <TableColumn fx:id="cartTotalColumn" text="小計" prefWidth="80" />
+                    </columns>
+                </TableView>
+                <VBox spacing="12.0" prefWidth="300" styleClass="card">
+                    <padding>
+                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                    </padding>
+                    <Label text="合計情報" styleClass="section-label" />
+                    <VBox spacing="8.0">
+                        <HBox spacing="10.0">
+                            <Label text="小計:" HBox.hgrow="ALWAYS" />
+                            <Label fx:id="subtotalLabel" text="0" />
+                        </HBox>
+                        <HBox spacing="10.0">
+                            <Label text="税:" HBox.hgrow="ALWAYS" />
+                            <Label fx:id="taxLabel" text="0" />
+                        </HBox>
+                        <Separator />
+                        <HBox spacing="10.0">
+                            <Label text="合計:" styleClass="total" HBox.hgrow="ALWAYS" />
+                            <Label fx:id="totalLabel" text="0" styleClass="total" />
+                        </HBox>
+                    </VBox>
+                    <Separator />
+                    <VBox spacing="5.0">
+                        <Label text="支払い方法:" />
+                        <ComboBox fx:id="paymentMethodCombo" prefWidth="200">
+                        </ComboBox>
+                    </VBox>
+                    <VBox spacing="5.0">
+                        <Label text="支払額:" />
+                        <TextField fx:id="paidAmountField" promptText="支払額" prefWidth="200" />
+                    </VBox>
+                    <Separator />
+                    <HBox spacing="10.0">
+                        <Button text="取消" onAction="#handleCancelCart" styleClass="flat" HBox.hgrow="ALWAYS" />
+                        <Button text="会計確定" onAction="#handleCheckout" styleClass="default-button" HBox.hgrow="ALWAYS" />
+                    </HBox>
+                </VBox>
+            </items>
+        </SplitPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="10.0" alignment="CENTER_RIGHT">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <Button text="明細削除" onAction="#handleRemoveFromCart" styleClass="outlined" />
+            <Button text="カートクリア" onAction="#handleClearCart" styleClass="flat" />
+        </HBox>
+    </bottom>
+</BorderPane>

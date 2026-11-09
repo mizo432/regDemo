@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="12.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.github.mizo432.reg.ui.controller.CommissionController" stylesheets="@../css/material-design.css">
+    <padding>
+        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+    </padding>
+
+    <Label text="委託商品管理" styleClass="header-label" />
+
+    <TableView fx:id="commissionTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="barcodeColumn" text="バーコード" prefWidth="120" />
+            <TableColumn fx:id="nameColumn" text="名称" prefWidth="200" />
+            <TableColumn fx:id="commissionerColumn" text="委託者" prefWidth="150" />
+            <TableColumn fx:id="rateColumn" text="手数料率" prefWidth="100" />
+            <TableColumn fx:id="typeColumn" text="種類" prefWidth="80" />
+        </columns>
+    </TableView>
+
+    <HBox spacing="10.0">
+        <Button text="新規登録" onAction="#handleNewCommission" styleClass="default-button" />
+        <Button text="更新" onAction="#handleRefresh" styleClass="outlined" />
+    </HBox>
+</VBox>
